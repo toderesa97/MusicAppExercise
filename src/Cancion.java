@@ -1,4 +1,4 @@
-public class Cancion {
+public class Cancion implements Comparable<Cancion> {
 
     private final String TITULO;
     private final String AUTOR;
@@ -30,5 +30,19 @@ public class Cancion {
                     && cancion.DURACION == DURACION;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[title: %s,author: %s,duration %s]", TITULO, AUTOR, DURACION);
+    }
+
+    @Override
+    public int compareTo(Cancion cancion){
+        int s;
+        if ((s = TITULO.compareTo(cancion.getTITULO())) == 0) {
+            return AUTOR.compareTo(cancion.getAUTOR());
+        }
+        return s;
     }
 }
